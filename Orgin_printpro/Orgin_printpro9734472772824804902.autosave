@@ -1,0 +1,72 @@
+PImage pic1;
+PImage pic2;
+PImage pic3;
+
+//分图层，需要几个加几个。
+
+size(680, 510); //图片尺寸大小
+background(47, 104, 121);
+
+pic1 = loadImage("pic1.png"); 
+pic2 = loadImage("pic2.png");
+pic3 = loadImage("pic3.png");
+//加载图片
+
+int xs =20; //像素点大小范围
+
+color cc=pic1.get(0, 0); //获取左上角像素点信息
+
+//背景
+
+for (int i = 0; i < 30000; ++i) {
+    noStroke();
+    fill(219, 231, 239);
+    rect(random(0, 900), random(0, 900), random(0, xs), random(0, xs));
+    fill(255, 95, 46);
+    rect(random(0, 900), random(0, 900), random(0, xs), random(0, xs));
+    fill(252, 190, 50);
+    rect(random(0, 900), random(0, 900), random(0, xs), random(0, xs));
+    fill(0, 78, 102);
+    rect(random(0, 900), random(0, 900), random(0, xs), random(0, xs));
+}
+
+//图层一
+
+for (int i = 0; i < 30; ++i) {
+    float x = random(0, 680);
+    float y = random(0, 510);
+    noStroke();
+    color c=pic1.get(int(x), int(y));
+    if (cc != c) {
+        fill(c);
+        rect(int(x), int(y), random(0, xs), random(0, xs));
+    }
+}
+
+//图层二
+
+for (int i = 0; i < 30; ++i) {
+    float x = random(0, 680);
+    float y = random(0, 510);
+    noStroke();
+    color c=pic2.get(int(x), int(y));
+    if (cc != c) {
+        fill(c);
+        rect(int(x), int(y), random(0, xs), random(0, xs));
+    }
+}
+
+//图层三
+
+for (int i = 0; i < 30; ++i) {
+    float x = random(0, 680);
+    float y = random(0, 510);
+    noStroke();
+    color c=pic3.get(int(x), int(y));
+    if (cc != c) {
+        fill(c);
+        rect(int(x), int(y), random(0, xs), random(0, xs));
+    }
+}
+
+saveFrame("rabbit.png");
